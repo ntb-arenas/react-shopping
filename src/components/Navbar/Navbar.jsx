@@ -18,14 +18,14 @@ const Navbar = ({ handleClick }) => {
   // ]
 
   return (
-    <div>
-      <button className="p-2 mx-2 border-2 rounded" onClick={(e) => handleClick("")}>
+    <div className="text-xl divide-x divide-gray-300">
+      <button className="px-5 py-2" onClick={(e) => handleClick("")}>
         ALL PRODUCTS
       </button>
 
       {category.map((category, index) => {
         return (
-          <button key={index} className="p-2 mx-2 border-2 rounded" onClick={(e) => handleClick(`category/${category}`)}>
+          <button key={index} className="px-5 py-2" onClick={(e) => handleClick(`category/${category}`)}>
             {category.toUpperCase()}
           </button>
         );
