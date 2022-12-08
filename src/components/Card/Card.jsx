@@ -1,15 +1,8 @@
-import React from "react";
+import React, { useState } from "react";
 
-// {
-//   id:30,
-//   title:'...',
-//   price:'...',
-//   category:'...',
-//   description:'...',
-//   image:'...'
-// }
+const Card = ({ item, addItem }) => {
+  const [isAdded, setIsAdded] = useState(true);
 
-const Card = ({ item }) => {
   return (
     <div className="flex flex-col justify-between p-2 border">
       <div>
@@ -24,7 +17,19 @@ const Card = ({ item }) => {
           {item.price}
         </p>
 
-        <button className="w-full py-2 mt-5 text-orange-500 border-2 border-orange-500 rounded">ADD TO CART</button>
+        <button
+          onClick={() => {
+            if (isAdded) {
+              addItem(item);
+              setIsAdded(!isAdded);
+            } else {
+              console.log("Product already added");
+            }
+          }}
+          className="w-full py-2 mt-5 text-orange-500 border-2 border-orange-500 rounded"
+        >
+          ADD TO CART
+        </button>
       </div>
     </div>
   );
