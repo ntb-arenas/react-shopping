@@ -14,9 +14,14 @@ const useCart = () => {
     }
   };
 
+  const clearCart = () => {
+    setCart([]);
+  };
+
   return {
     cart,
     addItemCart,
+    clearCart,
   };
 };
 

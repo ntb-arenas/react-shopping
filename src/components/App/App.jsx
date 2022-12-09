@@ -10,7 +10,7 @@ import useToggle from "../../hooks/useToggle";
 
 function App() {
   const { items, handleClick } = useItemApi([]);
-  const { cart, addItemCart } = useCart([]);
+  const { cart, addItemCart, clearCart } = useCart([]);
   const { value, toggleValue } = useToggle(false);
 
   return (
@@ -19,9 +19,9 @@ function App() {
         <Navbar handleClick={handleClick} products={items} toggleValue={toggleValue} />
       </div>
 
-      {<Cart cart={cart} isOpen={value} toggleValue={toggleValue} />}
+      {<Cart cart={cart} clearCart={clearCart} isOpen={value} toggleValue={toggleValue} />}
 
-      <div className="grid grid-cols-1 gap-5 p-5 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-5">
+      <div className="grid grid-cols-2 gap-5 p-5 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-5">
         {items.map((item) => (
           <Card key={item.id} item={item} addItem={addItemCart} toggleValue={toggleValue} />
         ))}

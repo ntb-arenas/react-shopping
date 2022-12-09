@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { AiOutlineShoppingCart } from "react-icons/ai";
 
 const Navbar = ({ handleClick, toggleValue }) => {
   const [category, setCategory] = useState([]);
@@ -21,8 +22,8 @@ const Navbar = ({ handleClick, toggleValue }) => {
         </button>
       ))}
 
-      <button className="px-5 py-2" onClick={toggleValue}>
-        Cart
+      <button className="px-5 py-2 text-2xl" onClick={toggleValue}>
+        <AiOutlineShoppingCart />
       </button>
     </div>
   );
