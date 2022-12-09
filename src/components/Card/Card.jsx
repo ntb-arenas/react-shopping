@@ -1,8 +1,6 @@
-import React, { useState } from "react";
+import React from "react";
 
 const Card = ({ item, addItem, toggleValue }) => {
-  const [isAdded, setIsAdded] = useState(true);
-
   return (
     <div className="relative flex flex-col justify-between p-2 overflow-hidden transition border group">
       <div>
@@ -16,12 +14,7 @@ const Card = ({ item, addItem, toggleValue }) => {
         <button
           onClick={() => {
             toggleValue(true);
-            if (isAdded) {
-              addItem(item);
-              setIsAdded(!isAdded);
-            } else {
-              console.log("Product already added");
-            }
+            addItem(item);
           }}
           className="p-3 text-white"
         >
