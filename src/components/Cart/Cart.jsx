@@ -4,7 +4,7 @@ const Cart = ({ cart, isOpen, toggleValue }) => {
   return (
     <div className={`${isOpen ? "right-0" : "-right-full"} p-4 fixed top-0 z-10 transition-all duration-300 bg-gray-50 border border-orange-500 w-full h-full md:w-[40%] xl:w-[30%]`}>
       <div className="flex justify-between">
-        <p>Shopping bag</p>
+        <p>Shopping bag ({cart.length})</p>
         <button onClick={() => toggleValue(false)} className="">
           close
         </button>
