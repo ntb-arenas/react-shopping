@@ -17,7 +17,7 @@ const Navbar = ({ handleClick, toggleValue }) => {
       </button>
 
       {category.map((category, index) => (
-        <button key={index} className="px-5 py-2" onClick={() => handleClick(`category/${category}`)}>
+        <button key={index} className="px-5 py-2" onClick={() => handleClick(`/category/${category}`)}>
           {category.toUpperCase()}
         </button>
       ))}

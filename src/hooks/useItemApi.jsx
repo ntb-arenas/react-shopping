@@ -4,8 +4,10 @@ const useItemApi = () => {
   const [items, setItem] = useState([]);
   const [resourceType, setResourceType] = useState("");
 
+  console.log("rendered");
+
   useEffect(() => {
-    fetch(`https://fakestoreapi.com/products/${resourceType}`)
+    fetch(`https://fakestoreapi.com/products${resourceType}`)
       .then((res) => res.json())
       .then((data) => setItem(data));
   }, [resourceType]);

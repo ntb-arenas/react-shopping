@@ -13,6 +13,8 @@ function App() {
   const { cart, addItemCart, clearCart } = useCart([]);
   const { value, toggleValue } = useToggle(false);
 
+  console.log(items);
+
   return (
     <div className="container mx-auto mt-5 font-poppins">
       <div className="text-center ">
