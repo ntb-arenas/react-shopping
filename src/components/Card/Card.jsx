@@ -1,13 +1,32 @@
 import React, { useState } from "react";
 
-const Card = ({ item, addItem }) => {
+const Card = ({ item, addItem, toggleValue }) => {
   const [isAdded, setIsAdded] = useState(true);
 
   return (
-    <div className="flex flex-col justify-between p-2 border">
+    <div className="relative flex flex-col justify-between p-2 overflow-hidden transition border group">
       <div>
-        <img src={item.image} className="max-h-[200px] mx-auto" alt="" />
+        <div className="p-5">
+          <img src={item.image} className="max-h-[200px] mx-auto group-hover:scale-110 transition duration-300" alt="" />
+        </div>
         <h1 className="font-bold ">{item.title}</h1>
+      </div>
+
+      <div className="absolute transition-all duration-300 bg-orange-500 opacity-0 top-5 -right-20 group-hover:opacity-100 group-hover:right-5">
+        <button
+          onClick={() => {
+            toggleValue(true);
+            if (isAdded) {
+              addItem(item);
+              setIsAdded(!isAdded);
+            } else {
+              console.log("Product already added");
+            }
+          }}
+          className="p-3 text-white"
+        >
+          ADD TO CART
+        </button>
       </div>
 
       <div className="mt-2">
@@ -16,20 +35,6 @@ const Card = ({ item, addItem }) => {
           <span>€</span>
           {item.price}
         </p>
-
-        <button
-          onClick={() => {
-            if (isAdded) {
-              addItem(item);
-              setIsAdded(!isAdded);
-            } else {
-              console.log("Product already added");
-            }
-          }}
-          className="w-full py-2 mt-5 text-orange-500 border-2 border-orange-500 rounded"
-        >
-          ADD TO CART
-        </button>
       </div>
     </div>
   );

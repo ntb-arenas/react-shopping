@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 
-const Navbar = ({ handleClick }) => {
+const Navbar = ({ handleClick, toggleValue }) => {
   const [category, setCategory] = useState([]);
 
   useEffect(() => {
@@ -11,7 +11,7 @@ const Navbar = ({ handleClick }) => {
 
   return (
     <div className="text-xl divide-x divide-gray-300">
-      <button className="px-5 py-2" onClick={(e) => handleClick("")}>
+      <button className="px-5 py-2" onClick={() => handleClick("")}>
         ALL PRODUCTS
       </button>
 
@@ -20,6 +20,10 @@ const Navbar = ({ handleClick }) => {
           {category.toUpperCase()}
         </button>
       ))}
+
+      <button className="px-5 py-2" onClick={toggleValue}>
+        Cart
+      </button>
     </div>
   );
 };
