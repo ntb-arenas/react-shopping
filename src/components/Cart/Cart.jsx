@@ -10,15 +10,12 @@ const Cart = ({ cart, clearCart, isOpen, toggleValue }) => {
   if (isOpen && isMobile) {
     // If cart is open and device is mobile
     document.body.style.overflow = "hidden";
-
     // safari
     document.body.style.WebkitOverflowScrolling = "touch";
   } else {
     document.body.style.overflow = "auto";
     document.body.style.WebkitOverflowScrolling = "auto";
   }
-
-  isOpen && isMobile ? (document.body.style.WebkitOverflowScrolling = "touch") : (document.body.style.overflow = "auto");
 
   return (
     <div className={`${isOpen ? "right-0" : "-right-full"} py-3 pl-2 fixed top-0 z-10 transition-all duration-300 bg-gray-100  w-full h-full md:w-[50%] xl:w-[30%]`}>
