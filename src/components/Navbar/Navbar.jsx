@@ -6,7 +6,7 @@ const Navbar = ({ products, filterProduct, toggleValue, cart }) => {
   const filteredCategory = [...new Set(productCategory)];
 
   return (
-    <div className="flex justify-center mx-auto text-xl divide-x divide-gray-300">
+    <div className="flex flex-wrap justify-center mx-auto text-xl divide-x divide-gray-300">
       <button className="px-5 py-2 transition duration-200 hover:text-neutral-500" onClick={() => filterProduct("all")}>
         ALL PRODUCTS
       </button>
