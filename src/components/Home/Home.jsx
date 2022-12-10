@@ -17,10 +17,8 @@ const Home = () => {
     <div className="container mx-auto mt-5 font-poppins">
       {<Cart cart={cart} clearCart={clearCart} isOpen={value} toggleValue={toggleValue} />}
 
-      <div className={`${value && "opacity-60 pointer-events-none transition duration-300"}`}>
-        <div className="text-center ">
-          <Navbar filterProduct={filterProduct} products={data} toggleValue={toggleValue} />
-        </div>
+      <div className={`${value && " transition duration-300"}`}>
+        <Navbar filterProduct={filterProduct} products={data} cart={cart} toggleValue={toggleValue} />
 
         <div className="grid grid-cols-2 gap-5 p-5 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-5">
           {products.map((product) => (

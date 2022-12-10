@@ -6,7 +6,7 @@ const Card = ({ product, addItem, toggleValue }) => {
   const { image, title, price, rating } = product;
 
   return (
-    <div className="relative flex flex-col justify-between p-2 overflow-hidden text-xs transition border group sm:text-base">
+    <div className="relative flex flex-col justify-between p-2 text-xs transition border group sm:text-base">
       <div>
         <div className="p-5">
           <img src={image} className="max-h-[200px] mx-auto group-hover:scale-110 transition duration-300" alt="" />
