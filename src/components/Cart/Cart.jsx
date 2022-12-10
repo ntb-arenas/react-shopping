@@ -7,6 +7,17 @@ import useCheckMobile from "../../hooks/useCheckMobile";
 const Cart = ({ cart, clearCart, isOpen, toggleValue }) => {
   const { isMobile } = useCheckMobile(false);
 
+  if (isOpen && isMobile) {
+    // If cart is open and device is mobile
+    document.body.style.overflow = "hidden";
+
+    // safari
+    document.body.style.WebkitOverflowScrolling = "touch";
+  } else {
+    document.body.style.overflow = "auto";
+    document.body.style.WebkitOverflowScrolling = "auto";
+  }
+
   isOpen && isMobile ? (document.body.style.WebkitOverflowScrolling = "touch") : (document.body.style.overflow = "auto");
 
   return (
