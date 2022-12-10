@@ -18,9 +18,9 @@ const Navbar = ({ products, filterProduct, toggleValue, cart }) => {
       ))}
 
       <div className="flex items-center px-5">
-        <button className="flex items-center text-2xl transition duration-200 hover:text-neutral-500" onClick={toggleValue}>
+        <button className="absolute flex items-center text-2xl transition duration-200 hover:text-neutral-500" onClick={toggleValue}>
           <AiOutlineShoppingCart />
-          <span className="ml-2">{cart.length}</span>
+          <span className="relative text-base -top-3">{cart.length}</span>
         </button>
       </div>
     </div>

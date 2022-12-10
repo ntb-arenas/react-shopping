@@ -14,7 +14,7 @@ const Card = ({ product, addItem }) => {
         <h1 className="font-bold">{title}</h1>
       </div>
 
-      <div className="absolute transition-all duration-300 bg-orange-500 opacity-0 top-5 -right-20 group-hover:opacity-100 group-hover:right-5">
+      <div className="absolute transition-all duration-300 bg-orange-500 opacity-0 top-5 -right-0 group-hover:opacity-100 group-hover:right-5 hover:bg-orange-300">
         <button
           onClick={() => {
             addItem(product);

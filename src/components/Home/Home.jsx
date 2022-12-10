@@ -12,7 +12,6 @@ const Home = () => {
   const { data, products, filterProduct } = useProductApi([]);
   const { cart, addItemCart, clearCart } = useCart([]);
   const { value, toggleValue } = useToggle(false);
-
   return (
     <div className="container mx-auto mt-5 overflow-x-hidden font-poppins">
       {<Cart cart={cart} clearCart={clearCart} isOpen={value} toggleValue={toggleValue} />}
