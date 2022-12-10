@@ -7,7 +7,7 @@ import useCheckMobile from "../../hooks/useCheckMobile";
 const Cart = ({ cart, clearCart, isOpen, toggleValue }) => {
   const { isMobile } = useCheckMobile(false);
 
-  isOpen && isMobile ? (document.body.style.overflow = "hidden") : (document.body.style.overflow = "auto");
+  isOpen && isMobile ? (document.body.style.WebkitOverflowScrolling = "touch") : (document.body.style.overflow = "auto");
 
   return (
     <div className={`${isOpen ? "right-0" : "-right-full"} py-3 pl-2 fixed top-0 z-10 transition-all duration-300 bg-gray-100  w-full h-full md:w-[50%] xl:w-[30%]`}>
