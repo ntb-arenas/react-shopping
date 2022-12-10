@@ -1,7 +1,7 @@
 import React from "react";
 import { IoMdAdd } from "react-icons/io";
 
-const Card = ({ product, addItem, toggleValue }) => {
+const Card = ({ product, addItem }) => {
   // Destructure product
   const { image, title, price, rating } = product;
 
@@ -17,7 +17,6 @@ const Card = ({ product, addItem, toggleValue }) => {
       <div className="absolute transition-all duration-300 bg-orange-500 opacity-0 top-5 -right-20 group-hover:opacity-100 group-hover:right-5">
         <button
           onClick={() => {
-            toggleValue(true);
             addItem(product);
           }}
           className="p-3 text-white"

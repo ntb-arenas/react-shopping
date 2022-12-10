@@ -14,7 +14,7 @@ const Home = () => {
   const { value, toggleValue } = useToggle(false);
 
   return (
-    <div className="container mx-auto mt-5 font-poppins">
+    <div className="container mx-auto mt-5 overflow-x-hidden font-poppins">
       {<Cart cart={cart} clearCart={clearCart} isOpen={value} toggleValue={toggleValue} />}
 
       <div className={`${value && " transition duration-300"}`}>
