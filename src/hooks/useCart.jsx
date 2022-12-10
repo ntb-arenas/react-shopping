@@ -4,17 +4,30 @@ const useCart = () => {
   const [cart, setCart] = useState([]);
 
   const addItemCart = (item) => {
-    setCart((prevCart) => [...prevCart, item]);
-
+    //Check if product already exists and return true
     const cartFind = cart.map((cartItem) => cartItem.id).includes(item.id);
 
     if (cartFind) {
-      setCart((prevCart) => prevCart.filter((cartItem, index, arr) => index === arr.findIndex((c) => c.id === cartItem.id)));
-      console.log("already added");
+      // If cartfind true, update product quantity to +1
+      const updateProductQty = cart.map((cartItem) => {
+        if (cartItem.id === item.id) {
+          return {
+            ...cartItem,
+            qty: cartItem.qty + 1,
+          };
+        }
+        return cartItem;
+      });
+      // Set updated array to cart
+      setCart(updateProductQty);
+    } else {
+      // If cartfind false, add new product to array and add new product property qty + 1
+      setCart((prevCart) => [...prevCart, { ...item, qty: 1 }]);
     }
   };
 
   const clearCart = () => {
+    // Reset cart array
     setCart([]);
   };
 
