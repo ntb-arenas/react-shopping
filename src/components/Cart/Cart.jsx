@@ -18,10 +18,9 @@ const Cart = ({ cart, clearCart, isOpen, toggleValue }) => {
   }
 
   return (
-    <div className={`${isOpen ? "right-0" : "-right-full"} py-3 pl-2 fixed top-0 z-10 transition-all duration-300 bg-gray-100  w-full h-full md:w-[50%] xl:w-[30%]`}>
+    <div className={`${isOpen ? "right-0" : "-right-full"} p-5 fixed top-0 z-10 transition-all duration-300 bg-gray-100  w-full h-full md:w-[50%] xl:w-[30%]`}>
       <div className="flex justify-between mb-5">
         <p className="flex items-center ">Shopping bag ({cart.length} items)</p>
-
         <button onClick={() => toggleValue(false)} className="text-red-500 text-[2rem]">
           <IoClose />
         </button>
