@@ -1,29 +1,19 @@
 import React from "react";
-import { AiOutlineShoppingCart } from "react-icons/ai";
+import NavbarLg from "./NavbarLg/NavbarLg";
+import NavbarSm from "./NavbarSm/NavbarSm";
+import useCheckMobile from "../../hooks/useCheckMobile";
 
 const Navbar = ({ products, filterProduct, toggleValue, cart }) => {
-  const productCategory = products.map((product) => product.category);
-  const filteredCategory = [...new Set(productCategory)];
+  const { isMobile } = useCheckMobile(false);
 
   return (
-    <div className="flex flex-wrap justify-center mx-auto text-xl divide-x divide-gray-300">
-      <button className="px-5 py-2 transition duration-200 hover:text-neutral-500" onClick={() => filterProduct("all")}>
-        ALL PRODUCTS
-      </button>
-
-      {filteredCategory.map((category, index) => (
-        <button key={index} className="px-5 py-2 transition duration-200 hover:text-neutral-500" onClick={() => filterProduct(`${category}`)}>
-          {category.toUpperCase()}
-        </button>
-      ))}
-
-      <div className="flex items-center px-5">
-        <button className="absolute flex items-center text-2xl transition duration-200 hover:text-neutral-500" onClick={toggleValue}>
-          <AiOutlineShoppingCart />
-          <span className="relative text-base -top-3">{cart.length}</span>
-        </button>
-      </div>
-    </div>
+    <React.Fragment>
+      {isMobile ? (
+        <NavbarSm filterProduct={filterProduct} products={products} cart={cart} toggleValue={toggleValue} />
+      ) : (
+        <NavbarLg filterProduct={filterProduct} products={products} cart={cart} toggleValue={toggleValue} />
+      )}
+    </React.Fragment>
   );
 };
 
