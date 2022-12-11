@@ -1,31 +1,31 @@
 import { useState, useEffect } from "react";
 
 const useProductApi = () => {
-  const [data, setItem] = useState([]);
-  const [products, setProducts] = useState([]);
+  const [allProducts, setAllProducts] = useState([]);
+  const [filteredProducts, setFilteredProducts] = useState([]);
 
   useEffect(() => {
     fetch(`https://fakestoreapi.com/products`)
       .then((res) => res.json())
       .then((data) => {
-        setItem(data);
-        setProducts(data);
+        setAllProducts(data);
+        setFilteredProducts(data);
       });
   }, []);
 
   const filterProduct = (category) => {
     if (category === "all") {
-      setProducts(data);
+      setFilteredProducts(allProducts);
     } else {
-      const updatedList = data.filter((x) => x.category === category);
-      setProducts(updatedList);
+      const updatedList = allProducts.filter((x) => x.category === category);
+      setFilteredProducts(updatedList);
     }
   };
 
   return {
-    data,
+    allProducts,
     filterProduct,
-    products,
+    filteredProducts,
   };
 };
 

@@ -1,7 +1,7 @@
 import React from "react";
 import { IoMdAdd } from "react-icons/io";
 
-const Card = ({ product, addItem }) => {
+const ProductProductCard = ({ product, addItem }) => {
   // Destructure product
   const { image, title, price, rating } = product;
 
@@ -36,4 +36,4 @@ const Card = ({ product, addItem }) => {
   );
 };
 
-export default Card;
+export default ProductProductCard;
