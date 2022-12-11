@@ -17,7 +17,7 @@ const Cart = ({ cart, clearCart, isCartOpen, toggleCart }) => {
         {cart.map((product) => (
           <div key={product.id} className="flex justify-between mt-3">
             <div className="flex">
-              <div className="border max-w-[50px] sm:max-w-[70px]  mr-2 p-2 bg-white">
+              <div className="p-2 max-w-[50px] mr-2 bg-white border">
                 <img src={product.image} alt="" className="w-full" />
               </div>
               <p className="text-xs sm:text-base">{product.title}</p>
