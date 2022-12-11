@@ -1,12 +1,12 @@
 import React from "react";
 import { AiOutlineShoppingCart } from "react-icons/ai";
 
-const NavbarLg = ({ products, filterProduct, toggleValue, cart }) => {
-  const productCategory = products.map((product) => product.category);
+const NavbarLg = ({ allProducts, filterProduct, toggleCart, cart }) => {
+  const productCategory = allProducts.map((product) => product.category);
   const filteredCategory = [...new Set(productCategory)];
 
   return (
-    <div className="flex flex-wrap justify-center mx-auto text-xl divide-x divide-gray-300 ">
+    <div className="flex-wrap justify-center hidden mx-auto text-xl divide-x divide-gray-300 md:flex ">
       <button className="px-5 py-2 transition duration-200 hover:text-neutral-500" onClick={() => filterProduct("all")}>
         ALL PRODUCTS
       </button>
@@ -18,7 +18,7 @@ const NavbarLg = ({ products, filterProduct, toggleValue, cart }) => {
       ))}
 
       <div className="flex items-center px-5">
-        <button className="absolute flex items-center text-2xl transition duration-200 hover:text-neutral-500" onClick={toggleValue}>
+        <button className="absolute flex items-center text-2xl transition duration-200 hover:text-neutral-500" onClick={toggleCart}>
           <AiOutlineShoppingCart />
           <span className="relative text-base -top-3">{cart.length}</span>
         </button>
