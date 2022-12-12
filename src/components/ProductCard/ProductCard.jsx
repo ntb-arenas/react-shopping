@@ -14,7 +14,7 @@ const ProductProductCard = ({ product, addItem }) => {
         <h1 className="font-bold">{title}</h1>
       </div>
 
-      <div className="absolute transition-all duration-300 bg-orange-500 opacity-0 top-5 -right-0 group-hover:opacity-100 group-hover:right-5 hover:bg-orange-300">
+      <div className="absolute hidden transition-all duration-300 bg-orange-500 opacity-0 sm:inline-block top-5 -right-0 group-hover:opacity-100 group-hover:right-5 hover:bg-orange-300">
         <button
           onClick={() => {
             addItem(product);
@@ -25,12 +25,22 @@ const ProductProductCard = ({ product, addItem }) => {
         </button>
       </div>
 
-      <div className="mt-2">
-        <p>Rating: {rating.rate}</p>
-        <p className="text-base sm:text-xl">
-          <span>€</span>
-          {price}
-        </p>
+      <div className="flex justify-between mt-2">
+        <div>
+          <p>Rating: {rating.rate}</p>
+          <p className="text-base sm:text-xl">
+            <span>€</span>
+            {price}
+          </p>
+        </div>
+        <button
+          onClick={() => {
+            addItem(product);
+          }}
+          className="p-3 text-white transition-all duration-300 bg-orange-500 sm:hidden group-hover:opacity-100 hover:bg-orange-300"
+        >
+          <IoMdAdd />
+        </button>
       </div>
     </div>
   );
