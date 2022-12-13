@@ -1,8 +1,7 @@
 import React from "react";
 import { IoClose } from "react-icons/io5";
-import { IoMdAddCircleOutline } from "react-icons/io";
-import { MdRemoveCircleOutline } from "react-icons/md";
 import { BsTrash } from "react-icons/bs";
+import CartCard from "./CartCard/CartCard";
 
 const Cart = ({ cart, clearCart, updateCart, isCartOpen, toggleCart }) => {
   return (
@@ -16,32 +15,8 @@ const Cart = ({ cart, clearCart, updateCart, isCartOpen, toggleCart }) => {
       </div>
 
       <div className="h-[60vh] overflow-y-auto">
-        {cart.map((product) => (
-          <div key={product.id} className="flex mt-3">
-            <img src={product.image} alt="" className="border max-w-[3.1rem] sm:max-w-[4.375rem]  mr-2 p-2 bg-white" />
-
-            <div className="text-xs">
-              <p>{product.title}</p>
-
-              <button
-                className="p-2 border"
-                onClick={() => {
-                  updateCart(product, "DecreaseQty");
-                }}
-              >
-                <MdRemoveCircleOutline />
-              </button>
-              <span className="px-2 border-gray-400 ">{product.qty}</span>
-              <button
-                className="p-2 border"
-                onClick={() => {
-                  updateCart(product, "IncreaseQty");
-                }}
-              >
-                <IoMdAddCircleOutline />
-              </button>
-            </div>
-          </div>
+        {cart.map((product, index) => (
+          <CartCard key={index} product={product} updateCart={updateCart} />
         ))}
       </div>
 
