@@ -1,12 +1,12 @@
 import React from "react";
 import { IoMdAdd } from "react-icons/io";
 
-const ProductProductCard = ({ product, addItem }) => {
+const ProductProductCard = ({ product, updateCart }) => {
   // Destructure product
   const { image, title, price, rating } = product;
 
   return (
-    <div className="relative flex flex-col justify-between p-2 text-xs transition border group sm:text-base">
+    <div className="relative flex flex-col justify-between p-2 text-xs transition group sm:text-base">
       <div>
         <div className="p-5">
           <img src={image} className="max-h-[200px] mx-auto group-hover:scale-110 transition duration-300" alt="" />
@@ -17,7 +17,7 @@ const ProductProductCard = ({ product, addItem }) => {
       <div className="absolute hidden transition-all duration-300 bg-orange-500 opacity-0 sm:inline-block top-5 -right-0 group-hover:opacity-100 group-hover:right-5 hover:bg-orange-300">
         <button
           onClick={() => {
-            addItem(product);
+            updateCart(product, "IncreaseQty");
           }}
           className="p-3 text-white"
         >
@@ -35,7 +35,7 @@ const ProductProductCard = ({ product, addItem }) => {
         </div>
         <button
           onClick={() => {
-            addItem(product);
+            updateCart(product, "IncreaseQty");
           }}
           className="p-3 text-white transition-all duration-300 bg-orange-500 sm:hidden group-hover:opacity-100 hover:bg-orange-300"
         >

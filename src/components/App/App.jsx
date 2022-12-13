@@ -6,7 +6,7 @@ import useProductApi from "../../hooks/useProductApi";
 function App() {
   const { allProducts } = useProductApi([]);
 
-  return <React.Fragment>{allProducts.length === 0 ? <LoadingSpinner /> : <Home />}</React.Fragment>;
+  return <div>{allProducts.length === 0 ? <LoadingSpinner /> : <Home />}</div>;
 }
 
 export default App;

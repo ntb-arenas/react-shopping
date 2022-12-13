@@ -1,8 +1,10 @@
 import React from "react";
 import { IoClose } from "react-icons/io5";
+import { IoMdAddCircleOutline } from "react-icons/io";
+import { MdRemoveCircleOutline } from "react-icons/md";
 import { BsTrash } from "react-icons/bs";
 
-const Cart = ({ cart, clearCart, isCartOpen, toggleCart }) => {
+const Cart = ({ cart, clearCart, updateCart, isCartOpen, toggleCart }) => {
   return (
     <div className={`${isCartOpen ? "right-0" : "-right-full"} p-5 fixed top-0 z-10 transition-all duration-300 bg-gray-100  w-full h-full md:w-[50%] xl:w-[30%]`}>
       <div className="flex justify-between mb-5">
@@ -13,14 +15,32 @@ const Cart = ({ cart, clearCart, isCartOpen, toggleCart }) => {
         </button>
       </div>
 
-      <div className="h-[60vh] pr-3 overflow-y-auto">
+      <div className="h-[60vh] overflow-y-auto">
         {cart.map((product) => (
-          <div key={product.id} className="flex justify-between mt-3">
-            <div className="flex">
-              <img src={product.image} alt="" className="border max-w-[3.1rem] sm:max-w-[4.375rem]  mr-2 p-2 bg-white" />
-              <p className="text-xs sm:text-base">{product.title}</p>
+          <div key={product.id} className="flex mt-3">
+            <img src={product.image} alt="" className="border max-w-[3.1rem] sm:max-w-[4.375rem]  mr-2 p-2 bg-white" />
+
+            <div className="text-xs">
+              <p>{product.title}</p>
+
+              <button
+                className="p-2 border"
+                onClick={() => {
+                  updateCart(product, "DecreaseQty");
+                }}
+              >
+                <MdRemoveCircleOutline />
+              </button>
+              <span className="px-2 border-gray-400 ">{product.qty}</span>
+              <button
+                className="p-2 border"
+                onClick={() => {
+                  updateCart(product, "IncreaseQty");
+                }}
+              >
+                <IoMdAddCircleOutline />
+              </button>
             </div>
-            <p className="ml-5 ">{product.qty}</p>
           </div>
         ))}
       </div>
