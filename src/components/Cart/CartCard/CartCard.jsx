@@ -1,8 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
 import { IoMdAddCircleOutline } from "react-icons/io";
 import { MdRemoveCircleOutline } from "react-icons/md";
 
 const CartCard = ({ product, updateCart }) => {
+  const [productPrice, setProductPrice] = useState(product.price * product.qty);
   return (
     <div key={product.id} className="flex justify-between mt-3">
       <div className="flex">
@@ -15,6 +16,11 @@ const CartCard = ({ product, updateCart }) => {
             className="p-2 border border-gray-300"
             onClick={() => {
               updateCart(product, "DecreaseQty");
+              if (product.qty > 1) {
+                setProductPrice((prevState) => prevState - product.price);
+              } else {
+                updateCart(product, "removeProduct");
+              }
             }}
           >
             <MdRemoveCircleOutline />
@@ -24,12 +30,13 @@ const CartCard = ({ product, updateCart }) => {
             className="p-2 border border-gray-300"
             onClick={() => {
               updateCart(product, "IncreaseQty");
+              setProductPrice((prevState) => prevState + product.price);
             }}
           >
             <IoMdAddCircleOutline />
           </button>
 
-          <p className="text-sm text-bold">Price: €test</p>
+          <p className="text-sm text-bold">Price: €{productPrice.toFixed(2)}</p>
         </div>
       </div>
 

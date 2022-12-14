@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 const useCart = () => {
   const [cart, setCart] = useState([]);
@@ -21,7 +21,6 @@ const useCart = () => {
               return {
                 ...cartItem,
                 qty: cartItem.qty + 1,
-                price: cartItem.price * cartItem.qty,
               };
             } else if (action === "DecreaseQty") {
               if (cartItem.qty > 1) {
@@ -40,17 +39,6 @@ const useCart = () => {
       // If cartfind false, add new product to array and add new product property qty + 1
       setCart((prevCart) => [...prevCart, { ...item, qty: 1 }]);
     }
-  };
-
-  const updatePrice = (item) => {
-    const updateProduct = cart.map((cartItem) => {
-      if (cartItem.id === item.id) {
-        return { ...cartItem, price: cartItem.price * cartItem.qty };
-      }
-      return cartItem;
-    });
-
-    setCart(updateProduct);
   };
 
   const clearCart = () => {
