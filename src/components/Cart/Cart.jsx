@@ -1,7 +1,7 @@
 import React from "react";
 import { IoClose } from "react-icons/io5";
 import { BsTrash } from "react-icons/bs";
-import CartCard from "./CartCard/CartCard";
+import CartCard from "./CartCard";
 
 const Cart = ({ cart, clearCart, updateCart, isCartOpen, toggleCart }) => {
   return (

@@ -36,7 +36,9 @@ const CartCard = ({ product, updateCart }) => {
             <IoMdAddCircleOutline />
           </button>
 
-          <p className="text-sm text-bold">Price: €{productPrice.toFixed(2)}</p>
+          <p className="text-xs mt-2">
+            Price: <span className="text-lg">€{productPrice.toFixed(2)}</span>
+          </p>
         </div>
       </div>
 

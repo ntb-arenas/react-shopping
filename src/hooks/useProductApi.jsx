@@ -22,10 +22,15 @@ const useProductApi = () => {
     }
   };
 
+  const addNewProduct = (newProduct) => {
+    console.log(newProduct);
+  };
+
   return {
     allProducts,
     filterProduct,
     filteredProducts,
+    addNewProduct,
   };
 };
 

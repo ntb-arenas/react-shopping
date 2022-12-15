@@ -3,6 +3,7 @@ import React from "react";
 import Cart from "../Cart/Cart";
 import Navbar from "../Navbar/Navbar";
 import ProductList from "../ProductList/ProductList";
+import AddNewProduct from "../AddNewProduct/AddNewProduct";
 // Import custom hooks
 import useProductApi from "../../hooks/useProductApi";
 import useCart from "../../hooks/useCart";
@@ -18,6 +19,7 @@ const Home = () => {
       <Cart cart={cart} updateCart={updateCart} clearCart={clearCart} isCartOpen={isCartOpen} toggleCart={toggleCart} />
       <Navbar filterProduct={filterProduct} allProducts={allProducts} cart={cart} toggleCart={toggleCart} />
       <ProductList filteredProducts={filteredProducts} updateCart={updateCart} />
+      <AddNewProduct />
     </div>
   );
 };

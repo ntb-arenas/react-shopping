@@ -3,7 +3,7 @@ import { AiOutlineShoppingCart } from "react-icons/ai";
 import { RxHamburgerMenu } from "react-icons/rx";
 import { IoClose } from "react-icons/io5";
 import useToggle from "../../../hooks/useToggle";
-import Navlinks from "./Navlinks/Navlinks";
+import Navlinks from "./Navlinks";
 
 const NavbarSm = ({ allProducts, filterProduct, cart, toggleCart }) => {
   const { value: isNavlinkOpen, toggleValue: toggleNavLinks } = useToggle(false);

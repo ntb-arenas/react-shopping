@@ -6,7 +6,7 @@ import useProductApi from "../../hooks/useProductApi";
 function App() {
   const { allProducts } = useProductApi([]);
 
-  return <div>{allProducts.length === 0 ? <LoadingSpinner /> : <Home />}</div>;
+  return <main>{allProducts.length === 0 ? <LoadingSpinner /> : <Home />}</main>;
 }
 
 export default App;
