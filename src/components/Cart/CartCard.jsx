@@ -1,9 +1,38 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { IoMdAddCircleOutline } from "react-icons/io";
 import { MdRemoveCircleOutline } from "react-icons/md";
 
-const CartCard = ({ product, updateCart }) => {
+const CartCard = ({ product, updateCart, total, setTotal }) => {
   const [productPrice, setProductPrice] = useState(product.price * product.qty);
+
+  const handleAddClick = (product, action) => {
+    if (action === "IncreaseQty") {
+      updateCart(product, action);
+      setProductPrice((prevState) => prevState + product.price);
+
+      let updateTotal = total + product.price;
+      setTotal(updateTotal);
+    } else if (action === "DecreaseQty") {
+      updateCart(product, action);
+      if (product.qty > 1) {
+        setProductPrice((prevState) => prevState - product.price);
+
+        let updateTotal = total - product.price;
+        setTotal(updateTotal);
+      }
+    } else {
+      updateCart(product, action);
+
+      let updateTotal = total - productPrice;
+      setTotal(updateTotal);
+    }
+  };
+
+  useEffect(() => {
+    let updateTotal = total + product.price;
+    setTotal(updateTotal);
+  }, []);
+
   return (
     <div key={product.id} className="flex justify-between mt-3">
       <div className="flex">
@@ -15,12 +44,7 @@ const CartCard = ({ product, updateCart }) => {
           <button
             className="p-2 border border-gray-300"
             onClick={() => {
-              updateCart(product, "DecreaseQty");
-              if (product.qty > 1) {
-                setProductPrice((prevState) => prevState - product.price);
-              } else {
-                updateCart(product, "removeProduct");
-              }
+              handleAddClick(product, "DecreaseQty");
             }}
           >
             <MdRemoveCircleOutline />
@@ -29,14 +53,13 @@ const CartCard = ({ product, updateCart }) => {
           <button
             className="p-2 border border-gray-300"
             onClick={() => {
-              updateCart(product, "IncreaseQty");
-              setProductPrice((prevState) => prevState + product.price);
+              handleAddClick(product, "IncreaseQty");
             }}
           >
             <IoMdAddCircleOutline />
           </button>
 
-          <p className="text-xs mt-2">
+          <p className="mt-2 text-xs">
             Price: <span className="text-lg">€{productPrice.toFixed(2)}</span>
           </p>
         </div>
@@ -44,9 +67,9 @@ const CartCard = ({ product, updateCart }) => {
 
       <div>
         <button
-          className="p-2 bg-red-500 text-white"
+          className="p-2 text-white bg-red-500"
           onClick={() => {
-            updateCart(product, "removeProduct");
+            handleAddClick(product, "removeProduct");
           }}
         >
           <MdRemoveCircleOutline />

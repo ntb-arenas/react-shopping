@@ -1,9 +1,10 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { IoClose } from "react-icons/io5";
 import { BsTrash } from "react-icons/bs";
 import CartCard from "./CartCard";
 
 const Cart = ({ cart, clearCart, updateCart, isCartOpen, toggleCart }) => {
+  const [total, setTotal] = useState(0);
   return (
     <div className={`${isCartOpen ? "right-0" : "-right-full"} p-5 fixed top-0 z-10 transition-all duration-300 bg-gray-100  w-full h-full md:w-[50%] xl:w-[30%]`}>
       <div className="flex justify-between mb-5">
@@ -16,8 +17,14 @@ const Cart = ({ cart, clearCart, updateCart, isCartOpen, toggleCart }) => {
 
       <div className="h-[60vh] overflow-y-auto">
         {cart.map((product, index) => (
-          <CartCard key={index} product={product} updateCart={updateCart} />
+          <CartCard key={index} product={product} updateCart={updateCart} setTotal={setTotal} total={total} />
         ))}
+      </div>
+
+      <div>
+        <h3>
+          Total: <span className="text-2xl">€{total.toFixed(2)}</span>
+        </h3>
       </div>
 
       <div className="absolute bottom-10 right-10">
@@ -25,6 +32,7 @@ const Cart = ({ cart, clearCart, updateCart, isCartOpen, toggleCart }) => {
           onClick={() => {
             clearCart();
             toggleCart(false);
+            setTotal(0);
           }}
           className="p-3 text-2xl text-white bg-red-500"
         >

@@ -17,7 +17,7 @@ const ProductProductCard = ({ product, updateCart }) => {
       <div className="absolute hidden transition-all duration-300 bg-orange-500 opacity-0 sm:inline-block top-5 -right-0 group-hover:opacity-100 group-hover:right-5 hover:bg-orange-300">
         <button
           onClick={() => {
-            updateCart(product, "IncreaseQty");
+            updateCart(product);
           }}
           className="p-3 text-white"
         >
@@ -35,7 +35,7 @@ const ProductProductCard = ({ product, updateCart }) => {
         </div>
         <button
           onClick={() => {
-            updateCart(product, "IncreaseQty");
+            updateCart(product);
           }}
           className="p-3 text-white transition-all duration-300 bg-orange-500 sm:hidden group-hover:opacity-100 hover:bg-orange-300"
         >
