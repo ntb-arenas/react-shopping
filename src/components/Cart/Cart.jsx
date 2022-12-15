@@ -21,7 +21,7 @@ const Cart = ({ cart, clearCart, updateCart, isCartOpen, toggleCart }) => {
         ))}
       </div>
 
-      <div>
+      <div className="px-5 py-2 bg-white border">
         <h3>
           Total: <span className="text-2xl">€{total.toFixed(2)}</span>
         </h3>
