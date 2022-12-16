@@ -4,7 +4,7 @@ const useProductApi = () => {
   const [allProducts, setAllProducts] = useState([]);
   const [filteredProducts, setFilteredProducts] = useState([]);
 
-  useState(() => {
+  useEffect(() => {
     setFilteredProducts(allProducts);
   }, [allProducts]);
 
@@ -25,22 +25,17 @@ const useProductApi = () => {
     }
   };
 
-  const addNewProduct = (newProduct) => {
-    console.log(newProduct);
-  };
-
   const handleSubmit = (values, { setSubmitting }) => {
     setTimeout(() => {
       setAllProducts((prevData) => [...prevData, { ...values, image: "https://images.unsplash.com/photo-1560393464-5c69a73c5770?", id: prevData.length + 1 }]);
       setSubmitting(false);
-    }, 500);
+    }, 400);
   };
 
   return {
     allProducts,
     filterProduct,
     filteredProducts,
-    addNewProduct,
     handleSubmit,
   };
 };
