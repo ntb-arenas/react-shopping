@@ -1,20 +1,17 @@
 const useForms = () => {
   const validation = (values) => {
     const errors = {};
-    if (!values.name) {
-      errors.name = "Obrigatório";
+    if (!values.title) {
+      errors.title = "Required";
     }
-    if (!/^[a-zA-Z]{5,10}$/i.test(values.name)) {
-      errors.name = "Não cumpre a regex";
+    if (!values.description) {
+      errors.description = "Required";
     }
-    if (!values.email) {
-      errors.email = "Obrigatório";
+    if (!values.price) {
+      errors.price = "Required";
     }
-    if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(values.email)) {
-      errors.email = "Endereço de email inválido";
-    }
-    if (values.password.length < 8) {
-      errors.password = "A password deve ter no mínimo 8 caracteres";
+    if (values.rating.rate > 5) {
+      errors.rating = "No more than 5";
     }
     return errors;
   };
@@ -23,7 +20,7 @@ const useForms = () => {
     setTimeout(() => {
       alert(JSON.stringify(values, null, 2));
       setSubmitting(false);
-    }, 1000);
+    }, 500);
   };
 
   return {

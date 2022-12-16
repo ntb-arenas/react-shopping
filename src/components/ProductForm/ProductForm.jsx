@@ -11,21 +11,25 @@ import useForms from "../../hooks/useForms";
 // rating: {rate: 4.7, count: 500}
 // title: "Mens Cotton Jacket"
 
-const ProductForm = () => {
-  const { handleSubmit, validation } = useForms();
+const ProductForm = ({ handleSubmit }) => {
+  const { validation } = useForms();
 
   return (
     <div>
       <h1 className="p-5 text-3xl font-bold text-white">Add new product</h1>
-      <Formik initialValues={{ name: "", email: "", password: "" }} validate={(values) => validation(values)} onSubmit={(values, { setSubmitting }) => handleSubmit(values, { setSubmitting })}>
+      <Formik
+        initialValues={{ title: "", category: "men's clothing", rating: { rate: 0 }, description: "", price: 0 }}
+        validate={(values) => validation(values)}
+        onSubmit={(values, { setSubmitting }) => handleSubmit(values, { setSubmitting })}
+      >
         {({ isSubmitting }) => (
-          <Form className="p-3 mx-5 mb-5 text-white bg-gray-700">
-            <section>
+          <Form className="p-3 mx-5 mb-5 text-white bg-gray-700 ">
+            <section className="flex items-center">
               <div className="m-2">
-                <label htmlFor="productName">Product Name: </label>
-                <Field type="text" className="px-2 py-1 bg-transparent border focus-visible:outline-none" name="productName" />
+                <label htmlFor="title">Product Name: </label>
+                <Field type="text" className="px-2 py-1 bg-transparent border focus-visible:outline-none" name="title" />
               </div>
-              <ErrorMessage className="error-message" name="productName" component="div" />
+              <ErrorMessage className="text-red-500" name="title" component="div" />
             </section>
             <section>
               <div className="m-2">
@@ -45,24 +49,31 @@ const ProductForm = () => {
                   </option>
                 </Field>
               </div>
-              <ErrorMessage className="error-message" name="category" component="div" />
+              <ErrorMessage className="text-red-500" name="category" component="div" />
             </section>
-            <section>
+            <section className="flex items-center">
               <div className="m-2">
                 <label htmlFor="description">Description: </label>
-                <Field type="number" className="px-2 py-1 bg-transparent border focus-visible:outline-none" name="description" />
+                <Field type="text" className="px-2 py-1 bg-transparent border focus-visible:outline-none" name="description" />
               </div>
-              <ErrorMessage className="error-message" name="description" component="div" />
+              <ErrorMessage className="text-red-500" name="description" component="div" />
             </section>
-            <section>
+            <section className="flex items-center">
+              <div className="m-2">
+                <label htmlFor="rating.rate">Rating (1-5): </label>
+                <Field type="number" className="px-2 py-1 bg-transparent border focus-visible:outline-none" name="rating.rate" />
+              </div>
+              <ErrorMessage className="text-red-500" name="rating" component="div" />
+            </section>
+            <section className="flex items-center">
               <div className="m-2">
                 <label htmlFor="price">Price: </label>
                 <Field type="number" className="px-2 py-1 bg-transparent border focus-visible:outline-none" name="price" />
               </div>
-              <ErrorMessage className="error-message" name="price" component="div" />
+              <ErrorMessage className="text-red-500" name="price" component="div" />
             </section>
-            <section>
-              <button type="submit" disabled={isSubmitting}>
+            <section className="text-center">
+              <button className="px-5 py-2 text-white border-b-4 border-orange-500" type="submit" disabled={isSubmitting}>
                 Submit
               </button>
             </section>
